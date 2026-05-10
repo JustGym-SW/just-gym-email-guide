@@ -420,8 +420,8 @@
 <!-- HERO -->
 <div class="hero">
   <div class="badge">Internal Guide</div>
-  <h1>Email & Google Workspace<br /><span>How It All Works</span></h1>
-  <p>Everything you need to know about the Just Gym email setup — migrated from IONOS to Google Workspace, built for automation.</p>
+  <h1>Email & Google Workspace<br /><span>Setup & Configuration</span></h1>
+  <p>Just Gym uses Google Workspace for email, file storage, and business automation.</p>
 </div>
 
 <!-- ALERT -->
@@ -437,12 +437,12 @@
 <section id="how-it-works">
   <h2>How It Works</h2>
 
-  <p>Just Gym email used to run through <strong>IONOS</strong> — a basic email hosting service. We've migrated to <strong>Google Workspace</strong>, which ties your email directly into Gmail, Drive, Calendar, and automation tools.</p>
+  <p>Email is hosted on <strong>Google Workspace</strong>, which integrates Gmail, Drive, Calendar, and automation tools.</p>
 
   <div class="card" style="margin-bottom:1.5rem;">
-    <div class="card-label">Active Setup</div>
+    <div class="card-label">Primary Account</div>
     <h3 style="font-size:1.1rem;">📬 info@just-gym.com</h3>
-    <p style="margin:0;">This is the one and only email account. It lives in Google Workspace. All email, Drive files, Calendar, and automations run through this account.</p>
+    <p style="margin:0;">The main business account in Google Workspace. Email, Drive, Calendar, and automations are managed through this account.</p>
   </div>
 
   <h3 style="margin-bottom:1rem;">IONOS vs Google Workspace</h3>
@@ -469,7 +469,6 @@
     </div>
   </div>
 
-  <p>The short version: IONOS was just a mailbox. Google Workspace is a full operating system for the business.</p>
 
   <h3 style="margin-bottom:1rem; margin-top:2rem;">The two info@ Google accounts</h3>
   <p>There are <strong style="color:var(--text);">two separate Google accounts</strong> that both use <code>info@just-gym.com</code>. They look similar but are completely different things. Always use the Workspace one for anything business-related.</p>
@@ -532,8 +531,8 @@
     </ul>
   </div>
 
-  <h3 style="margin-bottom:0.75rem;">Why this matters</h3>
-  <p>If you're signed in as a personal Google account or an old account, any Google Forms you submit, Drive files you upload, or calendar events you create will go to the wrong place — or be inaccessible to the business.</p>
+  <h3 style="margin-bottom:0.75rem;">Requirement</h3>
+  <p>If signed in to the wrong account, Google Forms, Drive files, and Calendar events will be sent to the wrong location and inaccessible to the business.</p>
 
   <div class="card">
     <div class="card-label">Quick Check — Before Any Task</div>
@@ -562,7 +561,7 @@
 <section id="automation">
   <h2>Automation — Why We Switched</h2>
 
-  <p>The move to Google Workspace unlocks automation that wasn't possible with IONOS. Everything can now talk to everything else.</p>
+  <p>Google Workspace enables automation across email, forms, spreadsheets, and calendar.</p>
 
   <div class="auto-grid">
     <div class="auto-card">
@@ -597,18 +596,17 @@
     </div>
   </div>
 
-  <p>With IONOS, every task was manual — receive an email, manually copy info, manually reply. With Google Workspace, you can set up flows where a membership enquiry email triggers a welcome email, adds a row to a spreadsheet, and creates a calendar follow-up — automatically.</p>
 </section>
 
 <!-- CLAUDE -->
 <section id="claude">
   <h2>Claude Desktop — Connected to Google</h2>
 
-  <p>Claude on desktop is connected directly to your Google account — Gmail, Drive, and Calendar. This means you can ask Claude to do real tasks using your actual business data, not just generic answers.</p>
+  <p>Claude Desktop is connected to the Google Workspace account and can access Gmail, Drive, and Calendar.</p>
 
   <div class="chrome-box" style="border-color: rgba(139,92,246,0.4); background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(232,255,0,0.04));">
-    <h3 style="color: #a78bfa;">🤖 What you can ask Claude</h3>
-    <p style="font-size:0.875rem; margin-bottom:1rem;">Because Claude has access to your Google Drive and Gmail, you can give it real context — not just "write me an email" but "write me a reply <em>based on this</em>."</p>
+    <h3 style="color: #a78bfa;">🤖 Claude Capabilities</h3>
+    <p style="font-size:0.875rem; margin-bottom:1rem;">Claude can access Google Drive and Gmail to draft responses using business data.</p>
     <ul class="chrome-steps" style="counter-reset: step;">
       <li style="counter-increment: none;">
         <span><strong>"Draft a reply to the membership enquiry in my inbox, keep it friendly and use the pricing from the membership doc in Drive."</strong></span>
@@ -628,8 +626,8 @@
     </ul>
   </div>
 
-  <h3 style="margin-bottom:0.75rem;">How the connection works</h3>
-  <p>Claude Desktop connects to Google via your <code>info@just-gym.com</code> account. It can read files from Google Drive, read and draft emails in Gmail, and pull context from Docs and Sheets — so its answers are specific to Just Gym, not generic.</p>
+  <h3 style="margin-bottom:0.75rem;">Connection</h3>
+  <p>Claude Desktop accesses Google Workspace through <code>info@just-gym.com</code> and can read from Drive, Gmail, Docs, and Sheets.</p>
 
   <div class="auto-grid" style="margin-top:1rem;">
     <div class="auto-card">
@@ -665,13 +663,6 @@
 <section id="faq">
   <h2>FAQ</h2>
 
-  <div class="faq-item">
-    <button class="faq-q" onclick="toggle(this)">
-      What happened to the old IONOS email?
-      <span class="faq-chevron">▼</span>
-    </button>
-    <div class="faq-a">All emails from IONOS were imported into Gmail. Nothing was lost. You can search for any old email inside Gmail — it all came across during the migration. IONOS email hosting has been cancelled.</div>
-  </div>
 
   <div class="faq-item">
     <button class="faq-q" onclick="toggle(this)">
