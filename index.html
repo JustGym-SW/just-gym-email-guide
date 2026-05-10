@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Just Gym — Email & Google Workspace Guide</title>
+  <style>
+    :root {
+      --black: #0d0d0d;
+      --dark: #1a1a1a;
+      --card: #222;
+      --border: #333;
+      --accent: #e8ff00;
+      --accent2: #00d4aa;
+      --text: #e8e8e8;
+      --muted: #888;
+      --danger: #ff4d4d;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--black);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,13,13,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 5rem 2rem 4rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(232,255,0,0.12);
+      color: var(--accent);
+      border: 1px solid rgba(232,255,0,0.3);
+      border-radius: 20px;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    h1 span { color: var(--accent); }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 540px;
+    }
+
+    /* ── ALERT BANNER ── */
+    .alert {
+      margin: 0 2rem 2rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      background: rgba(255,77,77,0.1);
+      border: 1px solid rgba(255,77,77,0.4);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .alert-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .alert strong {
+      display: block;
+      color: #ff6b6b;
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .alert p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .alert code {
+      background: rgba(255,255,255,0.08);
+      padding: 0.1em 0.4em;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.85em;
+      color: var(--text);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    p { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.75rem; }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── COMPARISON TABLE ── */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .compare-col {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .compare-header {
+      padding: 0.75rem 1rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+
+    .compare-header.ionos {
+      background: rgba(0, 100, 200, 0.2);
+      color: #60a5fa;
+    }
+
+    .compare-header.google {
+      background: rgba(232,255,0,0.1);
+      color: var(--accent);
+    }
+
+    .compare-body { padding: 1rem; }
+
+    .compare-item {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+      line-height: 1.4;
+    }
+
+    .compare-item::before {
+      content: '·';
+      flex-shrink: 0;
+      color: var(--border);
+    }
+
+    /* ── CHECKLIST ── */
+    .checklist { list-style: none; }
+
+    .checklist li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .checklist li:last-child { border-bottom: none; }
+
+    .check-num {
+      background: var(--accent);
+      color: var(--black);
+      font-weight: 800;
+      font-size: 0.75rem;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .checklist strong { color: var(--text); display: block; margin-bottom: 0.1rem; }
+
+    /* ── AUTOMATION GRID ── */
+    .auto-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .auto-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .auto-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .auto-title { font-size: 0.875rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .auto-desc { font-size: 0.8rem; color: var(--muted); }
+
+    /* ── FAQ ── */
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text);
+      text-align: left;
+      padding: 1rem 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .faq-q:hover { color: var(--accent); }
+
+    .faq-chevron {
+      flex-shrink: 0;
+      transition: transform 0.2s;
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+    .faq-a {
+      font-size: 0.875rem;
+      color: var(--muted);
+      padding-bottom: 1rem;
+      display: none;
+      line-height: 1.6;
+    }
+
+    .faq-a code {
+      background: rgba(255,255,255,0.07);
+      padding: 0.1em 0.4em;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.85em;
+      color: var(--text);
+    }
+
+    .faq-item.open .faq-a { display: block; }
+
+    /* ── CHROME REMINDER ── */
+    .chrome-box {
+      background: linear-gradient(135deg, rgba(0,212,170,0.08), rgba(232,255,0,0.05));
+      border: 1px solid rgba(0,212,170,0.3);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .chrome-box h3 {
+      color: var(--accent2);
+      margin-bottom: 0.75rem;
+      font-size: 1.05rem;
+    }
+
+    .chrome-steps { list-style: none; counter-reset: step; }
+
+    .chrome-steps li {
+      counter-increment: step;
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .chrome-steps li::before {
+      content: counter(step);
+      background: rgba(0,212,170,0.2);
+      color: var(--accent2);
+      font-weight: 700;
+      font-size: 0.75rem;
+      min-width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .chrome-steps strong { color: var(--text); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer code {
+      background: rgba(255,255,255,0.07);
+      padding: 0.1em 0.4em;
+      border-radius: 4px;
+      font-family: monospace;
+      color: var(--text);
+    }
+
+    @media (max-width: 540px) {
+      .compare { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">JUST GYM · Email Guide</a>
+  <ul class="nav-links">
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#chrome">Chrome Sign-In</a></li>
+    <li><a href="#automation">Automation</a></li>
+    <li><a href="#claude">Claude</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">Internal Guide</div>
+  <h1>Email & Google Workspace<br /><span>How It All Works</span></h1>
+  <p>Everything you need to know about the Just Gym email setup — migrated from IONOS to Google Workspace, built for automation.</p>
+</div>
+
+<!-- ALERT -->
+<div class="alert" id="chrome-alert">
+  <div class="alert-icon">⚠️</div>
+  <div>
+    <strong>Always check Chrome is signed into info@just-gym.com</strong>
+    <p>Before doing anything — booking, admin, forms, Drive — confirm Chrome is signed in as <code>info@just-gym.com</code>. Using the wrong account causes data to go to the wrong place.</p>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <h2>How It Works</h2>
+
+  <p>Just Gym email used to run through <strong>IONOS</strong> — a basic email hosting service. We've migrated to <strong>Google Workspace</strong>, which ties your email directly into Gmail, Drive, Calendar, and automation tools.</p>
+
+  <div class="card" style="margin-bottom:1.5rem;">
+    <div class="card-label">Active Setup</div>
+    <h3 style="font-size:1.1rem;">📬 info@just-gym.com</h3>
+    <p style="margin:0;">This is the one and only email account. It lives in Google Workspace. All email, Drive files, Calendar, and automations run through this account.</p>
+  </div>
+
+  <h3 style="margin-bottom:1rem;">IONOS vs Google Workspace</h3>
+  <div class="compare">
+    <div class="compare-col">
+      <div class="compare-header ionos">IONOS (Old)</div>
+      <div class="compare-body">
+        <div class="compare-item">Basic email sending & receiving only</div>
+        <div class="compare-item">No Google Drive, Calendar, or Docs</div>
+        <div class="compare-item">No automation integrations</div>
+        <div class="compare-item">No shared access or team features</div>
+        <div class="compare-item">Manual, nothing connects together</div>
+      </div>
+    </div>
+    <div class="compare-col">
+      <div class="compare-header google">Google Workspace (Now)</div>
+      <div class="compare-body">
+        <div class="compare-item">Gmail with full email history imported</div>
+        <div class="compare-item">Google Drive, Docs, Sheets, Calendar</div>
+        <div class="compare-item">Connects to Zapier, automation tools</div>
+        <div class="compare-item">Everything under one account</div>
+        <div class="compare-item">Forms → Sheets → email, automatically</div>
+      </div>
+    </div>
+  </div>
+
+  <p>The short version: IONOS was just a mailbox. Google Workspace is a full operating system for the business.</p>
+
+  <h3 style="margin-bottom:1rem; margin-top:2rem;">The two info@ Google accounts</h3>
+  <p>There are <strong style="color:var(--text);">two separate Google accounts</strong> that both use <code>info@just-gym.com</code>. They look similar but are completely different things. Always use the Workspace one for anything business-related.</p>
+
+  <div class="compare">
+    <div class="compare-col">
+      <div class="compare-header ionos">Personal Google Account</div>
+      <div class="compare-body">
+        <div class="compare-item">Free consumer account — created by signing up at google.com with the info@ address</div>
+        <div class="compare-item">Has its own Google Drive (personal files, not business)</div>
+        <div class="compare-item">Not managed by any admin — fully personal</div>
+        <div class="compare-item">No business email — does not handle gym inbox</div>
+        <div class="compare-item">Exists separately from the business setup</div>
+        <div class="compare-item" style="color:#ff6b6b;">⚠️ Do not use this for gym work</div>
+      </div>
+    </div>
+    <div class="compare-col">
+      <div class="compare-header google">Workspace Account</div>
+      <div class="compare-body">
+        <div class="compare-item">Paid business account — managed through Google Workspace</div>
+        <div class="compare-item">This is the actual Just Gym email inbox (Gmail)</div>
+        <div class="compare-item">Google Drive here holds all business files</div>
+        <div class="compare-item">Connected to Claude, Zapier, and automations</div>
+        <div class="compare-item">Has admin controls and business features</div>
+        <div class="compare-item" style="color:var(--accent2);">✓ Always use this one for gym work</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="border-color: rgba(255,77,77,0.3);">
+    <div class="card-label">How to tell which one you're in</div>
+    <ul class="checklist" style="margin-top:0.5rem;">
+      <li>
+        <div class="check-num" style="background:var(--accent2); color:var(--black);">✓</div>
+        <div><strong>Workspace account</strong> — When you go to Gmail you see the Just Gym inbox. At the top-right of any Google page, click your avatar and it will show a small "Managed by" or "Google Workspace" label under the email.</div>
+      </li>
+      <li>
+        <div class="check-num" style="background:#ff4d4d; color:white;">!</div>
+        <div><strong>Personal account</strong> — Gmail will be empty or show personal emails. No "Managed by" label. Drive will show personal files only. If this is what you see, switch accounts immediately.</div>
+      </li>
+    </ul>
+  </div>
+
+  <p style="margin-top:1rem;">When Chrome shows two <code>info@just-gym.com</code> options in the account switcher, pick the one labelled <strong style="color:var(--text);">Workspace</strong> or showing the Just Gym admin domain.</p>
+</section>
+
+<!-- CHROME SIGN-IN -->
+<section id="chrome">
+  <h2>Chrome Sign-In — Always Check</h2>
+
+  <div class="chrome-box">
+    <h3>🔑 Rule: Chrome must be signed into info@just-gym.com</h3>
+    <p style="font-size:0.875rem; margin-bottom:1rem;">Every time you open Chrome to do anything gym-related, check the profile icon in the top-right corner first. It must show <strong style="color:var(--text);">info@just-gym.com</strong>.</p>
+
+    <ul class="chrome-steps">
+      <li><span><strong>Open Chrome</strong> — look at the top-right corner for the profile circle.</span></li>
+      <li><span><strong>Click the circle</strong> — it shows the name or initial of the signed-in account.</span></li>
+      <li><span><strong>Confirm it says</strong> <strong>info@just-gym.com</strong>. If not, click "Switch account" and select it.</span></li>
+      <li><span><strong>Then proceed</strong> with whatever you need to do — Gmail, Drive, Calendar, forms, bookings.</span></li>
+    </ul>
+  </div>
+
+  <h3 style="margin-bottom:0.75rem;">Why this matters</h3>
+  <p>If you're signed in as a personal Google account or an old account, any Google Forms you submit, Drive files you upload, or calendar events you create will go to the wrong place — or be inaccessible to the business.</p>
+
+  <div class="card">
+    <div class="card-label">Quick Check — Before Any Task</div>
+    <ul class="checklist">
+      <li>
+        <div class="check-num">1</div>
+        <div><strong>Chrome profile = info@just-gym.com</strong> Check the circle in the top-right before starting.</div>
+      </li>
+      <li>
+        <div class="check-num">2</div>
+        <div><strong>Gmail open?</strong> You should see the Just Gym inbox at mail.google.com — not a personal inbox.</div>
+      </li>
+      <li>
+        <div class="check-num">3</div>
+        <div><strong>Drive open?</strong> drive.google.com should show Just Gym files, not personal files.</div>
+      </li>
+      <li>
+        <div class="check-num">4</div>
+        <div><strong>Booking / form submissions?</strong> Always done while signed in as info@ so responses land in the right Sheet.</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- AUTOMATION -->
+<section id="automation">
+  <h2>Automation — Why We Switched</h2>
+
+  <p>The move to Google Workspace unlocks automation that wasn't possible with IONOS. Everything can now talk to everything else.</p>
+
+  <div class="auto-grid">
+    <div class="auto-card">
+      <div class="auto-icon">📋</div>
+      <div class="auto-title">Forms → Sheets</div>
+      <div class="auto-desc">Google Forms auto-populate a linked spreadsheet. No manual data entry.</div>
+    </div>
+    <div class="auto-card">
+      <div class="auto-icon">📧</div>
+      <div class="auto-title">Auto Emails</div>
+      <div class="auto-desc">Trigger emails from Gmail automatically when a form is submitted or a date hits.</div>
+    </div>
+    <div class="auto-card">
+      <div class="auto-icon">🔗</div>
+      <div class="auto-title">Zapier / Make</div>
+      <div class="auto-desc">Connect Gmail, Sheets, and Drive to booking tools, CRMs, or anything else.</div>
+    </div>
+    <div class="auto-card">
+      <div class="auto-icon">📅</div>
+      <div class="auto-title">Calendar Sync</div>
+      <div class="auto-desc">Google Calendar links to booking systems, sends reminders automatically.</div>
+    </div>
+    <div class="auto-card">
+      <div class="auto-icon">📁</div>
+      <div class="auto-title">Drive Storage</div>
+      <div class="auto-desc">All files in one place, accessible from any device, shareable instantly.</div>
+    </div>
+    <div class="auto-card">
+      <div class="auto-icon">⚡</div>
+      <div class="auto-title">One Account</div>
+      <div class="auto-desc">One login controls email, files, calendar, forms, and automations.</div>
+    </div>
+  </div>
+
+  <p>With IONOS, every task was manual — receive an email, manually copy info, manually reply. With Google Workspace, you can set up flows where a membership enquiry email triggers a welcome email, adds a row to a spreadsheet, and creates a calendar follow-up — automatically.</p>
+</section>
+
+<!-- CLAUDE -->
+<section id="claude">
+  <h2>Claude Desktop — Connected to Google</h2>
+
+  <p>Claude on desktop is connected directly to your Google account — Gmail, Drive, and Calendar. This means you can ask Claude to do real tasks using your actual business data, not just generic answers.</p>
+
+  <div class="chrome-box" style="border-color: rgba(139,92,246,0.4); background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(232,255,0,0.04));">
+    <h3 style="color: #a78bfa;">🤖 What you can ask Claude</h3>
+    <p style="font-size:0.875rem; margin-bottom:1rem;">Because Claude has access to your Google Drive and Gmail, you can give it real context — not just "write me an email" but "write me a reply <em>based on this</em>."</p>
+    <ul class="chrome-steps" style="counter-reset: step;">
+      <li style="counter-increment: none;">
+        <span><strong>"Draft a reply to the membership enquiry in my inbox, keep it friendly and use the pricing from the membership doc in Drive."</strong></span>
+      </li>
+      <li style="counter-increment: none;">
+        <span><strong>"Look at the class timetable in Drive and write an email telling members about this week's schedule."</strong></span>
+      </li>
+      <li style="counter-increment: none;">
+        <span><strong>"Check my Gmail for any unanswered enquiries from the last 3 days and summarise them."</strong></span>
+      </li>
+      <li style="counter-increment: none;">
+        <span><strong>"Using the waiver template in Drive, fill it in for a new member and save it."</strong></span>
+      </li>
+      <li style="counter-increment: none;">
+        <span><strong>"Write a follow-up email for anyone who submitted the trial class form this week."</strong></span>
+      </li>
+    </ul>
+  </div>
+
+  <h3 style="margin-bottom:0.75rem;">How the connection works</h3>
+  <p>Claude Desktop connects to Google via your <code>info@just-gym.com</code> account. It can read files from Google Drive, read and draft emails in Gmail, and pull context from Docs and Sheets — so its answers are specific to Just Gym, not generic.</p>
+
+  <div class="auto-grid" style="margin-top:1rem;">
+    <div class="auto-card">
+      <div class="auto-icon">📂</div>
+      <div class="auto-title">Drive Access</div>
+      <div class="auto-desc">Claude can read any file in your Drive — templates, timetables, pricing docs — and use them as context.</div>
+    </div>
+    <div class="auto-card">
+      <div class="auto-icon">📬</div>
+      <div class="auto-title">Gmail Access</div>
+      <div class="auto-desc">Claude can read your inbox and draft replies, saving you time on routine email responses.</div>
+    </div>
+    <div class="auto-card">
+      <div class="auto-icon">✍️</div>
+      <div class="auto-title">Draft & Save</div>
+      <div class="auto-desc">Ask Claude to draft a doc or email — it can save it back to Drive or put it in Gmail drafts ready to send.</div>
+    </div>
+    <div class="auto-card">
+      <div class="auto-icon">🔍</div>
+      <div class="auto-title">Find Anything</div>
+      <div class="auto-desc">Ask Claude to find a specific email, file, or piece of info across your Google account instantly.</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1.5rem; border-color: rgba(139,92,246,0.3);">
+    <div class="card-label">Important</div>
+    <h3>Claude uses whichever Google account Chrome is signed into</h3>
+    <p style="margin:0.5rem 0 0;">This is another reason to always keep Chrome signed into <code>info@just-gym.com</code>. If you're on the wrong account, Claude will be reading the wrong Drive and the wrong inbox.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <h2>FAQ</h2>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      What happened to the old IONOS email?
+      <span class="faq-chevron">▼</span>
+    </button>
+    <div class="faq-a">All emails from IONOS were imported into Gmail. Nothing was lost. You can search for any old email inside Gmail — it all came across during the migration. IONOS email hosting has been cancelled.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      What happened to contact@just-gym.com?
+      <span class="faq-chevron">▼</span>
+    </button>
+    <div class="faq-a"><code>contact@just-gym.com</code> was a temporary Google Workspace account used during the migration. It has been removed. The permanent, active address is <code>info@just-gym.com</code> — this is the only address to use going forward.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Can I use info@just-gym.com on my phone?
+      <span class="faq-chevron">▼</span>
+    </button>
+    <div class="faq-a">Yes. Download the Gmail app, tap "Add Account", choose "Google", and sign in with <code>info@just-gym.com</code>. All email will sync automatically. Same goes for Google Drive and Google Calendar apps.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      What if Chrome is signed into the wrong account?
+      <span class="faq-chevron">▼</span>
+    </button>
+    <div class="faq-a">Click the profile circle in the top-right of Chrome. Select "Switch account" or "Add account" and sign in with <code>info@just-gym.com</code>. If you need to use both accounts, Chrome supports multiple profiles — you can open a separate Chrome window for each account.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Where are the Google Drive files?
+      <span class="faq-chevron">▼</span>
+    </button>
+    <div class="faq-a">All files are in Google Drive under <code>info@just-gym.com</code>. Go to drive.google.com while signed in as info@ and you'll see everything. Make sure Chrome is signed into the right account first or you'll see a different (possibly empty) Drive.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Do I need to pay for two accounts now?
+      <span class="faq-chevron">▼</span>
+    </button>
+    <div class="faq-a">No. There is one paid Google Workspace seat — <code>info@just-gym.com</code>. The temporary <code>contact@</code> account has been removed. IONOS email hosting has also been cancelled. You are paying for one thing only.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      How do I send email from info@just-gym.com?
+      <span class="faq-chevron">▼</span>
+    </button>
+    <div class="faq-a">Open Gmail at mail.google.com while signed in as <code>info@just-gym.com</code>. Hit Compose. The "From" field will automatically show <code>info@just-gym.com</code>. That's it — you're sending as the business email.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      What automations are set up?
+      <span class="faq-chevron">▼</span>
+    </button>
+    <div class="faq-a">The current setup is built to connect with tools like Zapier and Google Apps Script. Specific automations (enquiry forms, booking confirmations, etc.) are configured as needed. Because everything runs through one Google account, adding new automations is straightforward — any tool that connects to Gmail or Google Sheets can be plugged in.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      What if I forget the info@ password?
+      <span class="faq-chevron">▼</span>
+    </button>
+    <div class="faq-a">Go to accounts.google.com and click "Forgot password". Google will send a recovery code to the backup phone number or email on the account. If you're locked out completely, contact Google Workspace support through the Admin Console.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Is this setup secure?
+      <span class="faq-chevron">▼</span>
+    </button>
+    <div class="faq-a">Google Workspace includes 2-step verification, which should be turned on. This means even if someone gets the password, they can't access the account without the phone confirmation. It's significantly more secure than a basic IONOS email account.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  One account. One inbox. <code>info@just-gym.com</code> — everything runs here.
+</footer>
+
+<script>
+  function toggle(btn) {
+    const item = btn.closest('.faq-item');
+    item.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
